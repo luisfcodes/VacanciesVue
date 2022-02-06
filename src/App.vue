@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+  <button @click="unmounteComponent()">Desmontando o componente conteúdo</button>
+  <Header />
+  <Content v-if="visible"/>
+</template> 
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Content from "@/components/layouts/Content.vue";
+import Header from "@/components/layouts/Header.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Content,
+    Header,
+  },
+  data: () => ({
+    visible: true
+  }),
+  methods: {
+    unmounteComponent(){
+      this.visible = false
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
