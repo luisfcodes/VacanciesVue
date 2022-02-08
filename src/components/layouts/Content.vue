@@ -1,11 +1,5 @@
 <template>
   <div>
-    <p>{{title}}</p>
-    <button @click="updateComponent()">Atualizar</button>
-    <button @click="content = 'home'">Home</button>
-    <button @click="content = 'postVacancy'">Publicar Vaga</button>
-    <!-- <Home />
-    <PostVacancy /> -->
     <keep-alive>
       <component :is="content" />
     </keep-alive>
@@ -19,19 +13,15 @@ import Home from '../views/Home.vue'
 import PostVacancy from '../views/PostVacancy.vue'
 
 export default {
+  props: {
+    content: {
+      type: String,
+      required: true
+    }
+  },
   components: {
     Home,
     PostVacancy
-  },
-  data: () => ({
-    test: 'O componente foi criado',
-    title: 'Conteúdo',
-    content: 'home'
-  }),
-  methods: {
-    updateComponent(){
-      this.title += '*'
-    }
   },
   // beforeCreate(){
   //   console.log("Antes de criar", this.test)
